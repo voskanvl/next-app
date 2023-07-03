@@ -20,7 +20,7 @@ const Li = styled.li`
     transition: font-weight 0.5s;
     padding-block: 4px;
     &:hover {
-        font-weight: 700;
+        font-weight: 800;
     }
 `
 
