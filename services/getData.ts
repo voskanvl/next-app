@@ -5,6 +5,8 @@ export type Post = {
     body: string
 }
 
+export type Posts = Post[]
+
 export type User = {
     id: number
     name: string
@@ -29,31 +31,32 @@ export type User = {
     }
 }
 
+export type Users = User[]
+
 export async function getAllPosts() {
-    let res = await fetch("https://jsonplaceholder.typicode.com/posts", {
-        next: { revalidate: 60 },
-    })
+    let res = await fetch("https://jsonplaceholder.typicode.com/posts")
     res = await res.json()
-    return res as Response & Post[]
+    return res as Response & Posts
 }
 export async function getPostById(id: number) {
-    let res = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, {
-        next: { revalidate: 60 },
-    })
+    let res = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
     res = await res.json()
     return res as Response & Post
 }
-export async function getAllUsers() {
-    let res = await fetch("https://jsonplaceholder.typicode.com/users", {
-        next: { revalidate: 60 },
-    })
+
+export async function getPostBySearch(search: string) {
+    let res = await fetch(`https://jsonplaceholder.typicode.com/posts?q=${search}`)
     res = await res.json()
-    return res as Response & User[]
+    return res as Response & Posts
+}
+
+export async function getAllUsers() {
+    let res = await fetch("https://jsonplaceholder.typicode.com/users")
+    res = await res.json()
+    return res as Response & Users
 }
 export async function getUserById(id: number) {
-    let res = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`, {
-        next: { revalidate: 60 },
-    })
+    let res = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
     res = await res.json()
     return res as Response & User
 }
