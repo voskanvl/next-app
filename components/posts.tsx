@@ -36,7 +36,7 @@ export default function Posts({ posts }: { posts: Posts }) {
             <SearchPanel onChange={handleChange} />
             <List>
                 {postsData.map(e => (
-                    <Li>
+                    <Li key={e.id}>
                         <Link href={"/data/" + e.id.toString()}>{e.title}</Link>
                     </Li>
                 ))}
