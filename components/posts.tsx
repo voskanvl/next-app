@@ -7,6 +7,8 @@ import SearchPanel from "./searchPanel"
 import type { Posts } from "../services/getData"
 
 import styled from "styled-components"
+import { Providers } from "./providers"
+import { useSession } from "next-auth/react"
 
 const List = styled.ul`
     padding: 1rem;
@@ -26,6 +28,8 @@ const Li = styled.li`
 
 export default function Posts({ posts }: { posts: Posts }) {
     const [postsData, setPostData] = useState(posts)
+    const session = useSession()
+    console.log("🚀 ~ session:", session)
 
     const handleChange = async (search: string) => {
         const posts = await getPostBySearch(search)

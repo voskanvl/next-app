@@ -1,9 +1,13 @@
 import Image from "next/image"
 import styles from "./page.module.sass"
+import Link from "next/link"
+import SessionData from "@/components/sessionData"
 
 export default function Home() {
     return (
         <main className={styles.main}>
+            <SessionData />
+            <Link href="/data">DATA</Link>
             <div className={styles.description}>
                 <p>
                     Get started by editing&nbsp;
